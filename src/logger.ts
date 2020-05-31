@@ -2,7 +2,7 @@ import { LoggerConfig } from './types/LoggerConfig.ts';
 import { defaultConfig } from './defaultConfig.ts';
 import { getStrategy } from './strategy/getStrategy.ts';
 
-class Logger {
+export class Logger {
     private config = defaultConfig;
 
     constructor(config?: LoggerConfig) {
@@ -39,5 +39,3 @@ class Logger {
         return this;
     }
 }
-
-export const logger = new Logger();
