@@ -6,8 +6,8 @@ export const logger = new Logger();
 logger.debug('debug');
 logger.info('info');
 logger.warn('warn');
-logger.error('error');
-logger.critical('critical');
+logger.error(new Error('error'));
+logger.critical(new Error('critical'));
 
 // Configure example
 logger.configure({
@@ -21,5 +21,5 @@ logger
     .debug('debug')
     .info('info')
     .warn('warn')
-    .error('error')
-    .critical('critical');
+    .error(new Error('error'))
+    .critical(new Error('critical'));
