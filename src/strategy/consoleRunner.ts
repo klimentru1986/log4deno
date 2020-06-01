@@ -4,8 +4,9 @@ import { LogLevel } from '../types/LogLevel.ts';
 import { LoggerConfigItem } from '../types/LoggerConfig.ts';
 import { getDateString } from '../helpers/date.ts';
 import { formatLogMsg } from '../helpers/logFormat.ts';
+import { Runner } from '../types/Runner.ts';
 
-export function consoleStrategy(level: LogLevel, name: string, config: LoggerConfigItem, ...args: any[]) {
+export const consoleRunner: Runner = (level: LogLevel, name: string, config: LoggerConfigItem, ...args: any[]) => {
     const logTypes: LogLevel[] = ['INFO', 'DEBUG'];
     const warnTypes: LogLevel[] = ['WARN'];
     const errorTypes: LogLevel[] = ['ERROR', 'CRITICAL'];

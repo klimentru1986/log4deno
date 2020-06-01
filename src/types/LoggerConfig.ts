@@ -1,7 +1,9 @@
 import { LogFormat } from './LogFormat.ts';
 
 export interface LoggerConfigItem {
-    type: LogFormat;
+    types: LogFormat | LogFormat[];
+    logFolder?: string;
+    fileName?: string;
     dateFormat?: string;
     logFormat?: string;
 }

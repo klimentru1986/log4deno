@@ -1,1 +1,1 @@
-export type LogFormat = 'console';
+export type LogFormat = 'console' | 'file';

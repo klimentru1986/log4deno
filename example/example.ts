@@ -9,22 +9,24 @@ logger.warn('warn');
 logger.error(new Error('error'));
 logger.critical(new Error('critical'));
 
+
+// Logger config
 const config: LoggerConfig = {
-    default: {
-        type: 'console',
-    },
-    additional: {
-        type: 'console',
+    myConfig: {
+        types: ['console', 'file'],
         logFormat: '$level - $date',
-        dateFormat: 'dd.MMMM.yyyy'
+        dateFormat: 'dd.MMMM.yyyy',
+        fileName: 'MyLogs.log',
+        logFolder: 'MyLogModule'
     }
 };
 
 // Configure example
-logger.configure(config);
+const advancedLogger = new Logger();
+advancedLogger.configure(config);
 
 // Chain example
-logger
+advancedLogger
     .debug('debug')
     .info('info')
     .warn('warn')

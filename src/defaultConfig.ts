@@ -2,6 +2,7 @@ import { LoggerConfig } from './types/LoggerConfig.ts';
 
 export const defaultConfig: LoggerConfig = {
     default: {
-        type: 'console'
+        types: ['console', 'file'],
+        fileName: 'LogFile.log'
     }
 }

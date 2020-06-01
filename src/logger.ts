@@ -1,6 +1,6 @@
 import { LoggerConfig } from './types/LoggerConfig.ts';
 import { defaultConfig } from './defaultConfig.ts';
-import { getStrategy } from './strategy/getStrategy.ts';
+import { runner } from './strategy/runner.ts';
 
 export class Logger {
     private config = defaultConfig;
@@ -15,27 +15,27 @@ export class Logger {
     }
 
     debug(...args: any[]): Logger {
-        Object.keys(this.config).forEach(k => getStrategy('DEBUG', k, this.config[k], ...args));
+        Object.keys(this.config).forEach(k => runner('DEBUG', k, this.config[k], ...args));
         return this;
     }
 
     info(...args: any[]): Logger {
-        Object.keys(this.config).forEach(k => getStrategy('INFO', k, this.config[k], ...args));
+        Object.keys(this.config).forEach(k => runner('INFO', k, this.config[k], ...args));
         return this;
     }
 
     warn(...args: any[]): Logger {
-        Object.keys(this.config).forEach(k => getStrategy('WARN', k, this.config[k], ...args));
+        Object.keys(this.config).forEach(k => runner('WARN', k, this.config[k], ...args));
         return this;
     }
 
     error(...args: any[]): Logger {
-        Object.keys(this.config).forEach(k => getStrategy('ERROR', k, this.config[k], ...args));
+        Object.keys(this.config).forEach(k => runner('ERROR', k, this.config[k], ...args));
         return this;
     }
 
     critical(...args: any[]): Logger {
-        Object.keys(this.config).forEach(k => getStrategy('CRITICAL', k, this.config[k], ...args));
+        Object.keys(this.config).forEach(k => runner('CRITICAL', k, this.config[k], ...args));
         return this;
     }
 }

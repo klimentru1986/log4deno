@@ -7,7 +7,7 @@
 ## Features
 
 * [x] Console output
-* [ ] Files output
+* [x] Files output
 * [ ] Api endpoint output
 * [x] Configure
 * [x] Colors
