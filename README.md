@@ -31,8 +31,9 @@ logger
 ## Features
 - [x] Configure
 - [x] Console
-- [ ] Colors
+- [x] Colors
 - [ ] Files save
 - [ ] Max file size
-- [ ] Custom templates
+- [x] Custom templates
 - [ ] Set avaliable levels 
+- [ ] Documentation
