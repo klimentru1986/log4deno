@@ -36,9 +36,9 @@ export const fileRunner: Runner = async (level: LogLevel, name: string, config: 
     const logInfo = formatLogMsg(date, level, name, logFormat);
 
     const folder = config.logFolder || './Logs';
-
+    const fileName: string = (config.fileName || name+'.log').replace(/^\w/, c => c.toUpperCase());
     const task: WriteFileTask = {
-        fileName: `${folder}/${config.fileName || name+'.log'}`,
+        fileName: `${folder}/${fileName}`,
         task: `${logInfo} ${args.toString()}`
     }
 

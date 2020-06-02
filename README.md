@@ -12,8 +12,10 @@
 * [x] Configure
 * [x] Colors
 * [x] Custom templates
-* [ ] Max file size
 * [x] Set avaliable levels 
+* [ ] Reverse logs list
+* [ ] Max file size
+* [ ] Dynamic configuration
 
 ## Init logger and configure
 
