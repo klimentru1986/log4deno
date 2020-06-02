@@ -17,7 +17,8 @@ const config: LoggerConfig = {
         logFormat: '$level - $date',
         dateFormat: 'dd.MMMM.yyyy',
         fileName: 'MyLogs.log',
-        logFolder: 'MyLogModule'
+        logFolder: 'MyLogModule',
+        logLevel: ['ERROR']
     }
 };
 

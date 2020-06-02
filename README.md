@@ -6,14 +6,14 @@
 
 ## Features
 
+* [x] Multipe configurations
 * [x] Console output
 * [x] Files output
-* [ ] Api endpoint output
 * [x] Configure
 * [x] Colors
 * [x] Custom templates
 * [ ] Max file size
-* [ ] Set avaliable levels 
+* [x] Set avaliable levels 
 
 ## Init logger and configure
 
@@ -95,6 +95,6 @@ logger
 
 **Config parametr:** dateFormat
 
-**Default value:** 'dd/MM/yyyy HH:mm: SS'
+**Default value:** 'yyyy-MM-dd HH:mm:ss'
 
 **[Avaliable params](https://deno.land/x/date_fns/format/index.js)**
