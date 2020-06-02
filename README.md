@@ -17,66 +17,107 @@
 * [ ] Max file size
 * [ ] Dynamic configuration
 
-## Init logger and configure
+## Usage
 
-### Simple
+### [Simple](https://github.com/klimentru1986/log4deno/blob/master/examples/simple.ts)
 
 ``` 
+/** Create instance */
 export const logger = new Logger();
+
+/** Usage */
+logger.debug('debug message');
+logger.info('info');
+
+/** Usage with chain */
+logger
+    .warn('warn message')
+    .error(new Error('error message'))
+    .critical(new Error('critical message'));
 ```
 
-### With configuration
+### [Error logger](https://github.com/klimentru1986/log4deno/blob/master/examples/error.ts)
 
 ``` 
+/** Write to file only error and critical */
+const logger = new Logger();
 const config: LoggerConfig = {
-    default: {
-        type: 'console',
+    error: {
+        types: 'file',
+        fileName: 'Error.log',
+        logFolder: './Logs/Errors',
+        logLevel: ['ERROR', 'CRITICAL']
     }
-}; 
-
-export const logger = new Logger(config);
-```
-
-or 
-
-``` 
-const config: LoggerConfig = {
-    default: {
-        type: 'console',
-    },
-    additional: {
-        type: 'console',
-        logFormat: '$level - $date | $name',
-        dateFormat: 'dd.MMMM.yyyy'
-    }
-};
-
-const Logger = new Logger();
+}
 
 logger.configure(config);
 ```
 
-## Usage
-
-### Default
+### [Custom format](https://github.com/klimentru1986/log4deno/blob/master/examples/customFormat.ts)
 
 ``` 
-logger.debug('debug message');
-logger.info('info message');
-logger.warn('warn message');
-logger.error('error message');
-logger.critical('critical message');
+const logger = new Logger();
+const config: LoggerConfig = {
+    formattedLogs: {
+        logFormat: '$level - $date',
+        dateFormat: 'dd.MMMM.yyyy',
+    }
+};
+
+logger.configure(config);
 ```
 
-### Chain
+### [Multiple configurations](https://github.com/klimentru1986/log4deno/blob/master/examples/multiConfig.ts)
 
 ``` 
-logger
-    .debug('debug message')
-    .info('info message')
-    .warn('warn message')
-    .error('error message')
-    .critical('critical message');
+const logger = new Logger();
+
+/** Static config */
+const config: LoggerConfig = {
+    default: {
+        types: ['console', 'file'],
+        fileName: 'LogFile.log',
+        logLevel: ['INFO', 'WARN', 'ERROR', 'CRITICAL']
+    },
+    error: {
+        types: 'file',
+        fileName: 'Error.log',
+        logFolder: './Logs/Errors',
+        logLevel: ['ERROR', 'CRITICAL']
+    }
+};
+
+/** Enabled only in debug mode */
+isDebug && (config.debug = {
+    types: 'console',
+    logLevel: ['DEBUG']
+})
+
+logger.configure(config);
+```
+
+## Configuration
+
+* **types**: Array<'console' | 'file'>
+* **logFolder**: folder for logs
+* **fileName**: log file name
+* **logLevel**: Array<'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'CRITICAL'>
+* **logFormat**: log info output format
+* **dateFormat**: date output format
+
+### Default configuration
+
+``` 
+export const defaultConfig: LoggerConfig = {
+    default: {
+        types: ['console', 'file'],
+        logFolder: './Logs',
+        fileName: 'LogFile.log',
+        logLevel: ['DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL']
+        logFormat: '[$date] [$level] [$name]',
+        dateFormat: 'yyyy-MM-dd HH:mm:ss',
+    }
+}
 ```
 
 ## Custom format

@@ -8,6 +8,7 @@ export const defaultConfig: LoggerConfig = {
         logFormat: defaultLogFormat,
         dateFormat: defaultDateFormat,
         logFolder: './Logs',
-        fileName: 'LogFile.log'
+        fileName: 'LogFile.log',
+        logLevel: ['DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL']
     }
 }
